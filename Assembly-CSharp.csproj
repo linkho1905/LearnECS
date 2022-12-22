@@ -62,9 +62,11 @@
      <Compile Include="Assets\Scripts\Authoring\TankAuthoring.cs" />
      <Compile Include="Assets\Scripts\Systems\TurretRotationSystem.cs" />
      <Compile Include="Assets\Scripts\Authoring\TurretAuthoring.cs" />
+     <Compile Include="Assets\Scripts\Systems\TankSpawnSystem.cs" />
      <Compile Include="Assets\Scripts\Aspects\TurretAspect.cs" />
      <Compile Include="Assets\Scripts\Systems\TankMovementSystem.cs" />
      <Compile Include="Assets\Scripts\Aspects\CannonBallAspect.cs" />
+     <Compile Include="Assets\Scripts\Authoring\ConfigAuthoring.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Settings" />
      <Folder Include="Assets\Scenes\SampleScene" />

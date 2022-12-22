@@ -1,5 +1,6 @@
 using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Rendering;
 using UnityEngine;
 
 namespace Authoring
@@ -11,6 +12,7 @@ namespace Authoring
             public override void Bake(CannonBallAuthoring authoring)
             {
                 AddComponent<CannonBall>();
+                AddComponent<URPMaterialPropertyBaseColor>();
             }
         }
     }

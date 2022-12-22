@@ -21,9 +21,9 @@ namespace Systems
         public void OnUpdate(ref SystemState state)
         {
             var rotation = quaternion.RotateY(SystemAPI.Time.DeltaTime * math.PI);
-            foreach (var transform in SystemAPI.Query<TransformAspect>().WithAll<Turret>())
+            foreach (var transformAspect in SystemAPI.Query<TransformAspect>().WithAll<Turret>())
             {
-                transform.RotateWorld(rotation);
+                transformAspect.RotateWorld(rotation);
             }
         }
     }

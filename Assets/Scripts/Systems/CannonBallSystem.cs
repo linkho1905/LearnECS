@@ -25,16 +25,17 @@ namespace Systems
             var ecb = ecbSingleton.CreateCommandBuffer(state.WorldUnmanaged);
             var cannonBallJob = new CannonBallJob
             {
-                ECB = ecb.AsParallelWriter(),
+                Ecb = ecb.AsParallelWriter(),
                 DeltaTime = SystemAPI.Time.DeltaTime
             };
             cannonBallJob.ScheduleParallel();
         }
     }
     
+    [BurstCompile]
     internal partial struct CannonBallJob : IJobEntity
     {
-        public EntityCommandBuffer.ParallelWriter ECB { get; set; }
+        public EntityCommandBuffer.ParallelWriter Ecb { get; set; }
         public float DeltaTime { get; set; }
 
         private void Execute([ChunkIndexInQuery] int chunkIndex, ref CannonBallAspect cannonBallAspect)
@@ -50,8 +51,8 @@ namespace Systems
 
             cannonBallAspect.Speed += gravity * DeltaTime;
             var speed = math.lengthsq(cannonBallAspect.Speed);
-            // if (speed < 0.1f)
-            //     ECB.DestroyEntity(chunkIndex, cannonBallAspect.Self);
+            if (speed < 0.1f)
+                Ecb.DestroyEntity(chunkIndex, cannonBallAspect.Self);
         }
     }
 }
